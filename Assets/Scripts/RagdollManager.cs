@@ -36,23 +36,26 @@ public class RagdollManager : MonoBehaviour
 
     public void EnableRagdoll()
     {
-        animator.enabled = false;
+        if (animator) animator.enabled = false;
         if (controller) controller.enabled = false;
 
         SetRagdollState(true);
+        Debug.Log("Ragdoll si");
     }
 
     public void DisableRagdoll()
     {
-        
         if (hips != null)
             transform.position = hips.position;
 
         SetRagdollState(false);
 
-        animator.enabled = true;
+        if (animator) animator.enabled = true;
         if (controller) controller.enabled = true;
+
+        Debug.Log("Ragdoll no");
     }
+
 
     void SetRagdollState(bool active)
     {
